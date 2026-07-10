@@ -21,8 +21,10 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 
 # set locales 
 RUN apt-get install -y locales \
-	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
+	&& echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 && \
+    ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 # Install git and ssh
 RUN sudo apt install git ssh -y
@@ -36,7 +38,7 @@ RUN \
 
 # Filesystems
 RUN sudo apt-get install -y --no-install-recommends \
-    locales apt-utils tzdata wget software-properties-common \
+    apt-utils tzdata wget software-properties-common \
     bash bc binutils-dev bison build-essential ca-certificates cmake cpio curl default-jre \
     file flex g++ gcc gh git git-lfs libelf-dev libncurses5-dev libssl-dev \
     libxml2 lz4 make nano ninja-build python3 python3-dev python3-pip texinfo u-boot-tools \
