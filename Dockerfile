@@ -45,8 +45,6 @@ RUN sudo apt-get install -y --no-install-recommends \
     xz-utils zlib1g-dev zip unzip p7zip pigz zstd openssh-client aria2 jq ccache rsync && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
-RUN mkdir /var/run/sshd
-
 RUN echo 'root:root' | chpasswd
 
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
