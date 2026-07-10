@@ -41,7 +41,7 @@ RUN sudo apt-get install -y --no-install-recommends \
     apt-utils tzdata wget software-properties-common \
     bash bc binutils-dev bison build-essential ca-certificates cmake cpio curl default-jre \
     file flex g++ gcc gh git git-lfs libelf-dev libncurses5-dev libssl-dev \
-    libxml2 lz4 make nano ninja-build python3 python3-dev python3-pip texinfo u-boot-tools \
+    lz4 make nano ninja-build python3 python3-dev python3-pip texinfo u-boot-tools \
     xz-utils zlib1g-dev zip unzip p7zip pigz zstd openssh-client aria2 jq ccache rsync && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
